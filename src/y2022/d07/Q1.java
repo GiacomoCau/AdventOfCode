@@ -31,7 +31,7 @@ public class Q1 {
 	private static void method1() throws IOException {
 		Node root = new Node("/", null), current = root;
 		boolean ls = false;
-		for (var line: Files.readAllLines(new File("src/y2022/d07/P1.txt").toPath())) {
+		for (var line: Files.readAllLines(new File("src/y2022/d07/q1.txt").toPath())) {
 			//out.println(line);
 			var part = line.split(" ");
 			if (part[0].equals("$")) {
@@ -64,7 +64,7 @@ public class Q1 {
 	
 	private static void method2() throws IOException {
 		Node root = new Node("/", null), current = root;
-		for (var line: Files.readAllLines(new File("src/y2022/d07/P1.txt").toPath())) {
+		for (var line: Files.readAllLines(new File("src/y2022/d07/q1.txt").toPath())) {
 			//out.println(line);
 			var part = line.split(" ");
 			switch (part[0]) {

@@ -21,7 +21,7 @@ public class Q1 {
 
 	private static void method1() throws IOException {
 		int t = 0;
-		for (var line: Files.readAllLines(new File("src/y2022/d03/Q1.txt").toPath())) {
+		for (var line: Files.readAllLines(new File("src/y2022/d03/q1.txt").toPath())) {
 			var s = new LinkedHashSet<Character>();
 			int l = line.length(), h = l/2;
 			//out.println(line + ": " + l + " " + h);
@@ -41,7 +41,7 @@ public class Q1 {
 	
 	private static void method2() throws IOException {
 		int t = 0;
-		for (var line: Files.readAllLines(new File("src/y2022/d03/Q1.txt").toPath())) {
+		for (var line: Files.readAllLines(new File("src/y2022/d03/q1.txt").toPath())) {
 			int h = line.length()/2;
 			var s = toSet(line.substring(0, h));
 			s.retainAll(toSet(line.substring(h)));
@@ -52,7 +52,7 @@ public class Q1 {
 	
 	private static void method3() throws IOException {
 		int t = 0;
-		for (var line: Files.readAllLines(new File("src/y2022/d03/Q1.txt").toPath())) {
+		for (var line: Files.readAllLines(new File("src/y2022/d03/q1.txt").toPath())) {
 			int h = line.length()/2;
 			t += toSet(line.substring(0, h)).stream().filter(toSet(line.substring(h))::contains).mapToInt(c-> isLowerCase(c) ? (1 + c - 'a') : (27 + c - 'A')).sum();
 		}
@@ -61,7 +61,7 @@ public class Q1 {
 
 	private static void method4() throws IOException {
 		out.println(
-			Files.readAllLines(new File("src/y2022/d03/Q1.txt").toPath()).stream()
+			Files.readAllLines(new File("src/y2022/d03/q1.txt").toPath()).stream()
 			.flatMap(
 				line-> {
 					int h = line.length()/2;
@@ -78,7 +78,7 @@ public class Q1 {
 	
 	private static void method5() throws IOException {
 		out.println(
-			Files.readAllLines(new File("src/y2022/d03/Q1.txt").toPath()).stream()
+			Files.readAllLines(new File("src/y2022/d03/q1.txt").toPath()).stream()
 			.map(line-> { int h = line.length()/2; return new String[] { line.substring(0,h), line.substring(h) }; })
 			.flatMap(s-> { return toSet(s[0]).stream().filter(toSet(s[1])::contains); }	)
 			.mapToInt(c-> isLowerCase(c) ? (1 + c - 'a') : (27 + c - 'A'))

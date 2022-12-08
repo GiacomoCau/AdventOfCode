@@ -23,7 +23,7 @@ public class Q2 {
 	private static void method1() throws IOException {
 		int i = 0;
 		var stacks = new ArrayList<Stack>();
-		String line, lines[] = Files.readAllLines(new File("src/y2022/d05/Q1.txt").toPath()).toArray(String[]::new);
+		String line, lines[] = Files.readAllLines(new File("src/y2022/d05/q1.txt").toPath()).toArray(String[]::new);
 		for (int l=0; (l=(line=lines[i]).length()) > 0; i+=1) {
 			l = 1+(l-2)/4;
 			for (int j=0; j<l; j+=1) {
@@ -54,7 +54,7 @@ public class Q2 {
 	private static void method2() throws IOException {
 		int i = 0;
 		var stacks = new ArrayList<Stack>();
-		String line, lines[] = Files.readAllLines(new File("src/y2022/d05/Q1.txt").toPath()).toArray(String[]::new);
+		String line, lines[] = Files.readAllLines(new File("src/y2022/d05/q1.txt").toPath()).toArray(String[]::new);
 		for (int l=0; (l=(line=lines[i]).length()) > 0; i+=1) {
 			for (int e=1+l/4, j=0; j<e; j+=1) {
 				if (stacks.size() <= j) stacks.add(new Stack<Character>());
@@ -78,7 +78,7 @@ public class Q2 {
 	
 	private static void method3() throws IOException {
 		var stacks = new ArrayList<Stack>();
-		String[] part = Files.readString(new File("src/y2022/d05/Q1.txt").toPath()).split("\n\n");
+		String[] part = Files.readString(new File("src/y2022/d05/q1.txt").toPath()).split("\n\n");
 		for (var line: part[0].split("\n")) {
 			for (int e=1+line.length()/4, i=0, j=1; i<e; i+=1, j+=4) {
 				if (stacks.size() <= i) stacks.add(new Stack<Character>());
@@ -103,7 +103,7 @@ public class Q2 {
 	
 	private static void method4() throws IOException {
 		var stacks = new ArrayList<Stack>();
-		String[] part = Files.readString(new File("src/y2022/d05/Q1.txt").toPath()).split("\n\n");
+		String[] part = Files.readString(new File("src/y2022/d05/q1.txt").toPath()).split("\n\n");
 		for (var line: part[0].split("\n")) {
 			for (int e=line.length()/4+1, i=0, j=1; i<e; i+=1, j+=4) {
 				if (stacks.size() <= i) stacks.add(new Stack<Character>());
@@ -131,7 +131,7 @@ public class Q2 {
 	
 	private static void method5() throws IOException {
 		var stacks = new ArrayList<Stack>();
-		String[] part = Files.readString(new File("src/y2022/d05/Q1.txt").toPath()).split("\n\n");
+		String[] part = Files.readString(new File("src/y2022/d05/q1.txt").toPath()).split("\n\n");
 		for (var line: part[0].split("\n")) {
 			for (int e=line.length()/4+1, i=0, j=1; i<e; i+=1, j+=4) {
 				if (stacks.size() <= i) stacks.add(new Stack<Character>());

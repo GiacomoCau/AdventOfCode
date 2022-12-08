@@ -15,7 +15,7 @@ public class Q1 {
 	}
 	
 	private static void method1() throws IOException {
-		String line, lines[] = Files.readAllLines(new File("src/y2022/d05/Q1.txt").toPath()).toArray(String[]::new);
+		String line, lines[] = Files.readAllLines(new File("src/y2022/d05/q1.txt").toPath()).toArray(String[]::new);
 		int i = 0;
 		var stacks = new ArrayList<Stack>();
 		for (int l=0; (l=(line=lines[i]).length()) > 0; i+=1) {

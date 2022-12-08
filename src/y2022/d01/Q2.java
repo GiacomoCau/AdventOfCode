@@ -17,7 +17,7 @@ public class Q2 {
 
 	private static void method1() throws IOException {
 		int val=0;  var list = new ArrayList<Integer>();
-		for (var line: Files.readAllLines(new File("src/y2022/d01/Q1.txt").toPath())) {
+		for (var line: Files.readAllLines(new File("src/y2022/d01/q1.txt").toPath())) {
 			if (!line.isEmpty())
 				val += Integer.parseInt(line);
 			else {
@@ -29,7 +29,7 @@ public class Q2 {
 	}
 	
 	private static void method2() throws IOException {
-		String file = Files.readString(new File("src/y2022/d01/Q1.txt").toPath());
+		String file = Files.readString(new File("src/y2022/d01/q1.txt").toPath());
 		out.println(stream(file.split("\n\n")).map(s-> stream(s.split("\n")).mapToInt(Integer::parseInt).sum()).sorted(Comparator.reverseOrder()).limit(3).mapToInt(i->i).sum());
 	}
 

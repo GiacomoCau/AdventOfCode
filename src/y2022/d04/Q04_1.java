@@ -9,7 +9,7 @@ import java.util.Arrays;
 public class Q04_1 {
 	public static void main(String[] args) throws Exception {
 		out.println(
-			Files.readAllLines(new File("src/y2022/d04/Q1.txt").toPath()).stream()
+			Files.readAllLines(new File("src/y2022/d04/q1.txt").toPath()).stream()
 			.map(line-> Arrays.stream(line.split("[-,]")).map(Integer::parseInt).toArray(Integer[]::new))
 			.filter(a-> a[0] >= a[2] && a[1] <= a[3] || a[0] <= a[2] && a[1] >= a[3])
 			.count()

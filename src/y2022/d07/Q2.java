@@ -8,14 +8,8 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Q2 {
-	
-	
-	public static void main(String[] args) throws Exception {
-		method1();
-	}
 	
 	static class Node extends LinkedHashMap<String, Node> {
 		private static final long serialVersionUID = 1L;
@@ -31,9 +25,16 @@ public class Q2 {
 		}
 	}
 	
+	public static void main(String[] args) throws Exception {
+		Node root = tree();
+		sizes.clear();
+		int min = /*30_000_000 - 70_000_000 +*/ size(root) - 40_000_000 ; 
+		out.println(sizes.stream().mapToInt(i->i).filter(s-> s >= min).min().getAsInt());
+	}
+	
 	private static Node tree() throws IOException {
 		Node root = new Node("/", null), current = root; 
-		for (var line: Files.readAllLines(new File("src/y2022/d07/Q1.txt").toPath())) {
+		for (var line: Files.readAllLines(new File("src/y2022/d07/q1.txt").toPath())) {
 			//out.println(line);
 			var part = line.split(" ");
 			switch (part[0]) {
@@ -52,13 +53,6 @@ public class Q2 {
 			} 
 		}
 		return root;
-	}
-	
-	private static void method1() throws IOException {
-		Node root = tree();
-		sizes.clear();
-		int min = /*30_000_000 - 70_000_000 +*/ size(root) - 40_000_000 ; 
-		out.println(sizes.stream().mapToInt(i->i).filter(s-> s >= min).min().getAsInt());
 	}
 	
 	static List<Integer> sizes = new ArrayList();

@@ -8,7 +8,7 @@ import java.nio.file.Files;
 public class Q2 {
 	public static void main(String[] args) throws Exception {
 		int t = 0;
-		for (var line: Files.readAllLines(new File("src/y2022/d02/Q1.txt").toPath())) {
+		for (var line: Files.readAllLines(new File("src/y2022/d02/q1.txt").toPath())) {
 			//1:rock 2:paper 3:scissor
 			//x:perdere y:pareggiare z:vincere
 			var o = 1 + "ABC".indexOf(line.charAt(0));
