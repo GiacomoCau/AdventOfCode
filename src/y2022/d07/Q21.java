@@ -1,15 +1,18 @@
 package y2022.d07;
 
 import static java.lang.System.out;
+import static java.util.stream.Stream.concat;
+import static java.util.stream.Stream.of;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
+import java.util.function.Function;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
-public class Q2 {
+public class Q21 {
 	
 	static class Node extends LinkedHashMap<String, Node> {
 		private static final long serialVersionUID = 1L;
@@ -27,14 +30,15 @@ public class Q2 {
 	
 	public static void main(String[] args) throws Exception {
 		Node root = tree();
-		sizes.clear();
-		int min = /*30_000_000 - 70_000_000 +*/ size(root) - 40_000_000 ; 
-		out.println(sizes.stream().mapToInt(i->i).filter(s-> s >= min).min().getAsInt());
+		int min = size(root) /* 30_000_000 - 70_000_000 = */ - 40_000_000; 
+		out.println(nodes(root).mapToInt(n-> n.size).filter(s-> s >= min).min().getAsInt());
+		out.println(nodesSize(root).filter(s-> s >= min).min().getAsInt());
+		out.println(nodesToInt(root, n-> n.size).filter(s-> s >= min).min().getAsInt());
 	}
 	
 	private static Node tree() throws IOException {
 		Node root = new Node("/", null), current = root; 
-		for (var line: Files.readAllLines(new File("src/y2022/d07/q1.txt").toPath())) {
+		for (var line: Files.readAllLines(new File("src/y2022/d07/p1.txt").toPath())) {
 			//out.println(line);
 			var part = line.split(" ");
 			switch (part[0]) {
@@ -56,11 +60,17 @@ public class Q2 {
 		return root;
 	}
 	
-	static List<Integer> sizes = new ArrayList();
 	private static int size(Node node) {
-		int size = node.size + node.values().stream().mapToInt(Q2::size).sum();
-		sizes.add(size);
-		//out.println(node.name + " " + size);
-		return size;
+		return node.size += node.values().stream().mapToInt(Q21::size).sum();
+	}
+	
+	static Stream<Node> nodes(Node node) {
+	    return concat(of(node), node.values().stream().flatMap(Q21::nodes));
+	}
+	static IntStream nodesSize(Node node) {
+	    return IntStream.concat(IntStream.of(node.size), node.values().stream().flatMapToInt(Q21::nodesSize));
+	}
+	static IntStream nodesToInt(Node node, Function<Node,Integer> f) {
+	    return IntStream.concat(IntStream.of(f.apply(node)), node.values().stream().flatMapToInt(n-> nodesToInt(n, f)));
 	}
 }
