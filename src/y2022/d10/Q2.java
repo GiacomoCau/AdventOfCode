@@ -1,6 +1,7 @@
 package y2022.d10;
 
 import static java.lang.Integer.parseInt;
+import static java.lang.Math.abs;
 import static java.lang.System.out;
 import static java.nio.file.Files.readAllLines;
 
@@ -22,6 +23,6 @@ public class Q2 {
 	
 	static String ctr(int c, int x) {
 		c = (c-1) % 40;
-		return (c==0 ? "\n" : "") + (c > x-2 && c < x+2 ? '#' : ' ');
+		return (c==0 ? "\n" : "") + (abs(c-x) < 2 ? '#' : ' ');
 	}
 }
