@@ -25,13 +25,14 @@ public class Q21 {
 			this(
 				parseInt(d[0].replaceAll("\\D","")), // n
 				d[2].charAt(23), // o
-				((Function<String,Integer>) a-> a.equals("old") ? null : parseInt(a)).apply(d[2].substring(25)), // a
+				apply(a-> a.equals("old") ? 0 : parseInt(a), d[2].substring(25)), // a
 				parseInt(d[3].replaceAll("\\D","")), // d
 				parseInt(d[4].replaceAll("\\D","")), // tt
 				parseInt(d[5].replaceAll("\\D","")), // tf
 				Arrays.stream(d[1].split(": ")[1].split(", ")).map(Long::parseLong).toList() // ws
 			);
 		}
+		static <T,R> R apply(Function<T,R> f, T t) { return f.apply(t); }
 		@Override public String toString() { return "Monkey " + n + ": " + stream().map(i-> i.toString()).collect(joining(",")); }
 		void set(Monkey[] m) { mt=m[t]; mf=m[f]; }
 		void turn() {

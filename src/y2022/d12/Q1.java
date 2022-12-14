@@ -20,7 +20,7 @@ public class Q1 {
 				case R-> c==nc-1 ? null: p(r, c+1);
 			};
 		}
-		List<P> neighbours() {return stream(D.values()).map(d-> move(d)).filter(p-> p!=null).toList(); }
+		List<P> neighbours() {return stream(D.values()).map(d-> move(d)).filter(p-> p != null).toList(); }
 		int high() { return high[r][c]; }
 		boolean isVisited() { return visited[r][c]; }
 		void setVisited() { visited[r][c] = true; }

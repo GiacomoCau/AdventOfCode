@@ -3,7 +3,7 @@ package y2022.d12;
 import static java.lang.System.out;
 import static java.nio.file.Files.readAllLines;
 import static java.util.Arrays.stream;
-import static y2022.d12.Q2.P.p;
+import static y2022.d12.Q21.P.p;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class Q2 { 
+public class Q21 { 
 	enum D { U, L, D, R };
 	record P(int r, int c) {
 		P move(D d) {
@@ -39,10 +39,10 @@ public class Q2 {
 		nc = high[0].length;
 		E = find('E').findFirst().get(); 
 		//out.println(path(find('S').findFirst().get()));
-		out.println(find('a').map(p-> path(p)).filter(r-> r != null).mapToInt(i-> i).min().getAsInt());
+		out.println(find('a').mapToInt(Q21::path).filter(r-> r != -1).min().getAsInt());
 	}
 
-	private static Integer path(P s) {
+	private static int path(P s) {
 		visited = new boolean[nr][nc];
 		record Path (int size, P p){}; 
 		var todo = new LinkedList<Path>();
@@ -56,7 +56,7 @@ public class Q2 {
 			}
 			//show(c);
 		} while (!todo.isEmpty());
-		return null;
+		return -1;
 	}
 
 	private static Stream<P> find(int c) {
